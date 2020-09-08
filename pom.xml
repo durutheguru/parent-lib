@@ -31,7 +31,6 @@
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <start-class>.</start-class>
         <diffChangeLogFile>./</diffChangeLogFile>
-        <gpg.passphrase>.</gpg.passphrase>
         <code.coverage.inclusions>
             src/main/java/**
         </code.coverage.inclusions>
@@ -41,7 +40,7 @@
     </properties>
 
 
-    
+
 
     <dependencies>
 
