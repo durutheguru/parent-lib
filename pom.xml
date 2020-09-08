@@ -31,19 +31,13 @@
         <start-class>.</start-class>
         <diffChangeLogFile>./</diffChangeLogFile>
         <gpg.passphrase>.</gpg.passphrase>
+        <code.coverage.inclusions>
+            src/main/java/**
+        </code.coverage.inclusions>
+        <code.coverage.exclusions>
+            src/test/java/**
+        </code.coverage.exclusions>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Maven Central</name>
-            <layout>default</layout>
-            <url>https://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <dependencies>
 
@@ -97,7 +91,42 @@
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <id>sonar</id>
+            <properties>
+                <sonar.sources>.</sonar.sources>
+                <sonar.inclusions>${code.coverage.inclusions}</sonar.inclusions>
+                <sonar.exclusions>${code.coverage.exclusions}</sonar.exclusions>
+                <sonar.projectKey>durutheguru_luckynumbers</sonar.projectKey>
+                <sonar.organization>durutheguru</sonar.organization>
+                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+                <sonar.login>.</sonar.login>
+                <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonarsource.scanner.maven</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                        <version>3.4.0.905</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sonar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
+
 
     <build>
         <plugins>
