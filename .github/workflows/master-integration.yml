@@ -37,6 +37,6 @@ jobs:
         with:
           java-version: 14
       - name: Build with Maven
-        run: mvn clean deploy -s settings.xml -f pom.xml
+        run: mvn -N clean deploy -s settings.xml -f pom.xml
 
 
