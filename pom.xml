@@ -41,6 +41,7 @@
         <sonar.projectKey.config>durutheguru_luckynumbers</sonar.projectKey.config>
         <sonar.organization.config>durutheguru</sonar.organization.config>
         <sonar.host.url.config>https://sonarcloud.io</sonar.host.url.config>
+        <sonar.qualitygate.wait.config>true</sonar.qualitygate.wait.config>
     </properties>
 
 
@@ -108,7 +109,7 @@
                 <sonar.organization>${sonar.organization.config}</sonar.organization>
                 <sonar.host.url>${sonar.host.url.config}</sonar.host.url>
                 <sonar.login>.</sonar.login>
-                <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
+                <sonar.qualitygate.wait>${sonar.qualitygate.wait.config}</sonar.qualitygate.wait>
             </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>
