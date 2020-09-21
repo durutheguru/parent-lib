@@ -34,7 +34,7 @@ jobs:
       - name: Evaluate New Artifact Version
         run: |
           NEW_VERSION=${{ steps.gitversion.outputs.semVer }}
-          echo 'Artifact Semantic Version: ${NEW_VERSION}'
+          echo "Artifact Semantic Version: ${NEW_VERSION}"
           mvn -N versions:set -DnewVersion=${NEW_VERSION}-SNAPSHOT
 #          sed -i "s/<artifact.version>.*<\/artifact.version>/<artifact.version>${NEW_VERSION}-SNAPSHOT<\/artifact.version>/g" pom.xml
       - name: Build with Maven
