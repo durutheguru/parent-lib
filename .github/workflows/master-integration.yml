@@ -31,16 +31,16 @@ jobs:
         uses: gittools/actions/gitversion/execute@v0.9.3
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-      - name: Setup Java 14 Env
+      - name: Setup Java 17 Env
         uses: actions/setup-java@v1
         with:
-          java-version: 14
+          java-version: 17
       - name: Evaluate New Artifact Version
         run: |
           NEW_VERSION=${{ steps.gitversion.outputs.semVer }}
           echo "Artifact Semantic Version: ${NEW_VERSION}"
-          mvn -N versions:set -DnewVersion=${NEW_VERSION}-SNAPSHOT
-#          sed -i "s/<artifact.version>.*<\/artifact.version>/<artifact.version>${NEW_VERSION}-SNAPSHOT<\/artifact.version>/g" pom.xml
+          mvn -N versions:set -DnewVersion=${NEW_VERSION}
+#          sed -i "s/<artifact.version>.*<\/artifact.version>/<artifact.version>${NEW_VERSION}<\/artifact.version>/g" pom.xml
       - name: Build with Maven
         run: |
           MAVEN_OPTS="--add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.desktop/java.awt.font=ALL-UNNAMED"
@@ -58,7 +58,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
 
-  merge-master:
+  merge-develop:
     name: Merge to Develop
     needs: [build]
     runs-on: ubuntu-latest
