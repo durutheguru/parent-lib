@@ -44,7 +44,7 @@ jobs:
       - name: Build with Maven
         run: |
           export MAVEN_OPTS="--add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.desktop/java.awt.font=ALL-UNNAMED"
-          mvn -N clean deploy -s settings.xml -f pom.xml
+          mvn -N clean deploy -s settings.xml -f pom.xml -Pdeploy
       - name: Committing Update
         run: |
           git config user.email ${{ secrets.GIT_EMAIL }}
